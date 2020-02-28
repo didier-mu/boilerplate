@@ -11,7 +11,7 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync').create(),
     pug = require('gulp-pug'),
     rename = require('gulp-rename'),
-    imagemin = require('gulp-imagemin');
+    csvtojson = require('gulp-csvtojson');
 
 
 
@@ -96,6 +96,21 @@ gulp.task('scripts', function() {
 
 
 
+
+/* ======================================================================================================
+* Tarea sobre csv to json
+* ======================================================================================================*/
+
+gulp.task('csv2json', function () {
+    return gulp.src('./src/js/*.csv')
+        .pipe(csvtojson({ toArrayString: true }))
+        // .pipe(gulp.dest('./dist/js/'));
+        .pipe(gulp.dest('./dist/js/'));
+    });
+    
+
+    
+
 /* ======================================================================================================
  * Browser Sync
  * ======================================================================================================*/
@@ -156,4 +171,4 @@ gulp.task('watch', function() {
  * Default Task
  * ======================================================================================================*/
 
-gulp.task('default', ['pug', "sass", 'scripts', "minifyCSS" , 'browser-sync', 'pastefiles', 'watch', 'img']);
+gulp.task('default', ['pug', "sass", 'scripts', "minifyCSS" , 'browser-sync', 'pastefiles', 'watch', 'img','csv2json']);
