@@ -32,6 +32,7 @@
     "request-json": "^0.6.4"
   },
   "dependencies": {
+    "gulp-csvtojson": "^0.2.0",
     "pug": "^2.0.4"
   }
 }
