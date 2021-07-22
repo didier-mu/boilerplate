@@ -1,17 +1,13 @@
 
-body {
-
-    @media (min-width:768px) {
-        
-     
-        
-        
-    }//768
-
-    @media (min-width:992px) {
+/// MOBILE
+@media (min-width:992px) {
 
 
-    }// 996
+}// 992
 
 
-}
+/// VALIDACION SAFARI
+
+@media not all and (min-resolution:.001dpcm){ @supports (-webkit-appearance:none) {
+    
+}}

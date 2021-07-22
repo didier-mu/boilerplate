@@ -1,27 +1,18 @@
-//COMPONENTS
+//package
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 
 //var
-@import "layout/vars";
+@import "core/vars";
 
 //fonts
-@import "layout/fonts";
-
-
+@import "core/fonts";
 
 //mixins
-@import "helpers/mixins";
+@import "core/mixins";
 
-//utilities
-@import "helpers/utilities";
 
 //general styles
 @import "layout/body";
-
-//media viewports
-@import "layout/media";
-
-
-
-
 

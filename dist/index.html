@@ -1,12 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <link rel="preload" href="css/styles.min.css" as="style">
     <meta charset="utf-8">
-    <link rel="shortcut icon" href="img/logos/favicon.ico" type="image/x-icon">
-    <title>Title</title>
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <title></title>
     <link rel="stylesheet" href="css/styles.min.css">
-    <script src="js/scripts.min.js" async defer></script>
+    <script src="js/scripts.min.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   </head>
-  <body class="home"></body>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-6 col-lg-1 header--logo" id="header--logo"></div>
+          <div class="col-6 col-lg-10 header--navegacion">
+            <nav class="navbar-expand-lg">
+              <div class="btn" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"></div>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul></ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row"> 
+        <div class="col-12"></div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 d-flex align-items-center">
+            <p>Copyright</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" type="button">Save changes</button>
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

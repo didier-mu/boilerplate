@@ -1,17 +1,22 @@
 /* ======================================================================================================
  * Plugins utilizados
  * ======================================================================================================*/
-var gulp = require('gulp'),
-    sass = require('gulp-sass'),
-    cssmin = require('gulp-cssmin'),
-    autoprefixer = require('gulp-autoprefixer'),
-    notify = require('gulp-notify'),
-    concat = require('gulp-concat'),
-    uglify = require('gulp-uglify'),
-    browserSync = require('browser-sync').create(),
-    pug = require('gulp-pug'),
-    rename = require('gulp-rename'),
-    csvtojson = require('gulp-csvtojson');
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const cssmin = require('gulp-cssmin');
+const autoprefixer = require('gulp-autoprefixer');
+const notify = require('gulp-notify');
+const concat = require('gulp-concat');
+const uglifyes = require('gulp-uglify-es').default;
+const browserSync = require('browser-sync').create();
+const pug = require('gulp-pug');
+const rename = require('gulp-rename');
+const imagemin = require("gulp-imagemin");
+const webp = require("imagemin-webp");
+const extReplace = require("gulp-ext-replace");
+const watch = require('gulp-watch');
+const purgecss = require('gulp-purgecss')
+    
 
 
 
@@ -20,27 +25,35 @@ var gulp = require('gulp'),
  * ======================================================================================================*/
 
 
-gulp.task('pug', function() {
+gulp.task('pug', () => {
+   
     return gulp.src(['./src/pug/*.pug', '!./src/pug/includes'])
         .pipe(pug({
             pretty: true
         }))
-        .pipe(gulp.dest('./dist/'))
+        // .pipe(rewriteImagePath({
+        //     path: "build/images",
+        // }))
+        .pipe(gulp.dest('./dist/'));
+        
 });
+
 
 
 /* ======================================================================================================
  * Tarea sobre los Estilos SCSS
  * ======================================================================================================*/
 
-gulp.task('sass', function() {
+gulp.task('sass', () => {
 
     return gulp.src('./src/scss/main.scss')
         .pipe(sass().on('error', sass.logError))
-        // .pipe(sourcemaps.init())
         .pipe(cssmin().on('error', function(err) {
             console.log(err);
         }))
+        // .pipe(urlAdjuster({
+        //     replace:  ['../../img/','../img/'],
+        // }))
         .pipe(autoprefixer({ browsers: ['last 2 versions'], cascade: false }))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('./src/css/'))
@@ -53,82 +66,73 @@ gulp.task('sass', function() {
  * Tarea sobre css minify
  * ======================================================================================================*/
 
-gulp.task('minifyCSS', function() {
+gulp.task('minifyCSS', () => {
 
     return gulp.src('./src/css/*.css')
+        .pipe(purgecss({
+            content: ['src/**/*.pug']
+        }))
         .pipe(cssmin())
         .pipe(concat('styles.min.css'))
         .pipe(gulp.dest('./dist/css/'))
         .pipe(browserSync.stream());
+
 
 });
 
 /* ======================================================================================================
  * Tarea sobre minify image
  * ======================================================================================================*/
-gulp.task('img', function() {
+gulp.task('img', () => {
     gulp.src('./src/img/**/**.*')
         // .pipe(imagemin())
         .pipe(gulp.dest('./dist/img/'))
 
 });
 
+
+/* ======================================================================================================
+ * Tarea para crear imagenes webp
+ * ======================================================================================================*/
+
+
+gulp.task("exportWebP", () => {
+    let src = "./src/img/**/*.{jpg,png}";
+    let dest = "./src/img/"; 
+    let destDist = "./dist/img/"; 
+  
+    return gulp.src(src)
+      .pipe(imagemin([
+        webp({
+          quality: 75
+        })
+      ]))
+      .pipe(extReplace(".webp"))
+      .pipe(gulp.dest(dest))
+      .pipe(gulp.dest(destDist));
+  });
+
 /* ======================================================================================================
  * Tarea sobre los Scripts
  * ======================================================================================================*/
-gulp.task('scripts', function() {
+gulp.task('scripts', () => {
     return gulp.src([
         './src/js/jquery-3.4.1.min.js',
-        './src/js/*.js'
+        './src/js/**/**.js'
     ])
 
-    .pipe(uglify())
-        .pipe(concat('scripts.min.js'))
-        .pipe(gulp.dest('./dist/js/'));
+    .pipe(uglifyes())
+    .pipe(concat('scripts.min.js'))
+    .pipe(gulp.dest('./dist/js/'));
 });
 
-
-// // clean out old scripts build
-// gulp.task('scripts-clean', function() {
-//     return gulp.src('./src/js/*/*.js')
-//         .pipe(rimraf())
-// });
-
-
-
-
-/* ======================================================================================================
-* Tarea sobre csv to json
-* ======================================================================================================*/
-
-gulp.task('csv2json', function () {
-    return gulp.src('./src/js/*.csv')
-        .pipe(csvtojson({ toArrayString: true }))
-        // .pipe(gulp.dest('./dist/js/'));
-        .pipe(gulp.dest('./dist/js/'));
-    });
-    
-
-    
-
-/* ======================================================================================================
- * Browser Sync
- * ======================================================================================================*/
-gulp.task('browser-sync', ['watch', 'pastefiles'], function() {
-    browserSync.init({
-        injectChanges: true,
-        files: ['*.html', './dist/**/*.{html,css,js}'],
-        server: "./dist/",
-    });
-
-});
 
 
 
 /* ======================================================================================================
  * Send Fonts and Images
  * ======================================================================================================*/
-gulp.task('pastefiles', function() {
+gulp.task('pastefiles', () => {
 
     gulp.src("./src/fonts/**/**.*")
         .pipe(gulp.dest('./dist/fonts/'));
@@ -136,39 +140,44 @@ gulp.task('pastefiles', function() {
     gulp.src('./src/img/**/**.*')
         .pipe(gulp.dest('./dist/img/'));
 
-    // gulp.src(['./src/pug/*.pug', '!./src/pug/includes'])
-    // .pipe(gulp.dest('./dist/'));
-
-
-    // gulp.src('./src/js/*.js')
-
-    // .pipe(uglify())
-    //     .pipe(concat('scripts.min.js'))
-    //     .pipe(gulp.dest('./dist/js'));
-
-    // gulp.pipe(concat('styles.min.css'))
-    // .pipe(gulp.dest('./dist/css/'));
-
 });
 
 
 /* ======================================================================================================
  * Tarea por default
  * ======================================================================================================*/
-gulp.task('watch', function() {
-    gulp.watch('./src/scss/**/**.scss', ['sass']);
-    gulp.watch('./src/css/**/**.css', ['minifyCSS']);
-    gulp.watch('./src/js/*.js', ['scripts']);
-    gulp.watch('./src/pug/**/*.pug', ['pug']);
-    gulp.watch('./src/fonts/*', ['pastefiles']);
-    gulp.watch('./src/img/**/**.*', ['img']);
-
+gulp.task('watch', () => {
+    gulp.watch('./src/scss/**/**.scss', gulp.series('sass'));
+    gulp.watch('./src/css/**/**.css', gulp.series('minifyCSS'));
+    gulp.watch('./src/js/**/**.js', gulp.series('scripts'));
+    gulp.watch('./src/pug/**/*.pug', gulp.series('pug'));
+    gulp.watch('./src/img/**/**.*',  gulp.series('img'));
+    gulp.watch('./src/fonts/*',  gulp.series('pastefiles'));
+    
 });
 
+/* ======================================================================================================
+ * Browser Sync
+ * ======================================================================================================*/
+gulp.task('browser-sync', () => {
+    browserSync.init({
+        injectChanges: true,
+        files: ['*.html', './dist/**/*.{html,css,js}'],
+        server: "./dist/",
+    });
+
+    gulp.watch('./src/pug/**/*.pug', gulp.parallel('pug'));
+    gulp.watch('./src/scss/**/**.scss', gulp.parallel('sass'));
+    gulp.watch('./src/css/**/**.css', gulp.parallel('minifyCSS'));
+    gulp.watch('./src/js/**/**.js', gulp.parallel('scripts'));
+    gulp.watch('./dist/');
+    gulp.watch('./dist/').on('change', browserSync.reload);
+
+});
 
 
 /* ======================================================================================================
  * Default Task
  * ======================================================================================================*/
 
-gulp.task('default', ['pug', "sass", 'scripts', "minifyCSS" , 'browser-sync', 'pastefiles', 'watch', 'img','csv2json']);
+gulp.task('default', gulp.parallel('pug', "sass", 'scripts', "minifyCSS" , 'img', 'exportWebP', 'pastefiles', 'watch','browser-sync'));
