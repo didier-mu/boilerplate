@@ -1,15 +1,81 @@
 header.header
-    .container
-        .row
-            .col-6.col-lg-1.header--logo#header--logo
-                
-            .col-6.col-lg-10.header--navegacion
-                nav.navbar-expand-lg
-                    .btn(data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
-                        
-                    div.collapse.navbar-collapse#navbarNav
-                        ul
-                        
-                    
-                          
-                            
+	.container-fluid
+		.row
+			.col-6.col-lg-2.header--logo
+				a(href="../") 
+					img.img-fluid(src=ruta+"img/logo_pulso_2.png" alt="Pulso GNP 2022")
+
+			.col-lg-10.col-6.header--navegacion.d-flex
+				nav.navbar-expand-lg
+					.btn(data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
+
+					.collapse.navbar-collapse#navbarNav
+
+						ul
+
+							li#li-lineup
+								a.text-decoration-none(href=ruta+"index.html") LINEUP 
+
+							//- li 
+							//- 	a.text-decoration-none(href=ruta+"horarios.html") HORARIOS
+
+							li#li-boletos
+								a.text-decoration-none(href=ruta+"index.html#home--boletos") BOLETOS
+
+							li#li-beneficios
+								a.text-decoration-none(href=ruta+"index.html#home--beneficios") BENEFICIOS
+
+							//- li.submenu
+							//- 	a.text-decoration-none(href=ruta+"experiencia.html") EXPERIENCIA
+
+							//- 	ul 
+
+							//- 		li#li-cashless
+							//- 			a.text-decoration-none(href=ruta+"cashless.html") Cashless
+							//- 		li 
+							//- 			a.text-decoration-none(href=ruta+"patrocinadores.html") PATROCINADORES
+
+							//- 		li
+							//- 			a.text-decoration-none(href=ruta+"actividades.html") ACTIVIDADES
+
+							//- 		li
+							//- 			a.text-decoration-none(href=ruta+"mapa.html") MAPA									
+
+							//- 		li 
+							//- 			a.text-decoration-none(href=ruta+"amenidades-y-servicios.html") AMENIDADES & SERVICIOS
+
+							//- 		li 
+							//- 			a.text-decoration-none(href=ruta+"actividades-sostenibles.html") ACTIVIDADES SOSTENIBLES
+
+
+
+							li
+								a.text-decoration-none(href=ruta+"medidas-sanitarias.html") MEDIDAS SANITARIAS
+
+							//- 		ul 
+							//- 			li#li-fast
+							//- 				a.text-decoration-none(href=ruta+"medidassanitarias.html#fastpass") Fast Pass
+
+							//- li.submenu
+							//- 	a.text-decoration-none(href=ruta+"como-llegar.html") CÓMO LLEGAR
+
+							//- 	ul 
+							//- 		li#li-ubicacion
+							//- 			a.text-decoration-none(href=ruta+"como-llegar.html") Ubicación
+
+							//- 		li#li-estacionamiento
+							//- 			a.text-decoration-none(href=ruta+"como-llegar.html#estacionamiento") Estacionamiento
+
+							//- 		li#li-transporte
+							//- 			a.text-decoration-none(href=ruta+"como-llegar.html#transporte") Transportación de aire & terrestre
+
+
+							//- li.submenu
+							//- 	a.text-decoration-none(href=ruta+"info.html") INFO
+
+							//- li
+							//- 	a.text-decoration-none(href=ruta+"preguntas-frecuentes.html") FAQ'S
+
+							//- li
+							//- 	a.text-decoration-none(href=ruta+"merch.html") MERCH
+
