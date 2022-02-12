@@ -1,37 +1,36 @@
 :root {
-    // COLORS/////
-    --naranja: #FF6C0D;
-    --verde: #094034;
-    --arena: #EAE4BE;
-    --naranja_dos: #F8B22B;
-    --azul: #514499;
-    --gris: #343434;
-    --negro: #000000;
-    --blanco: #FFFFFF;
-    --azulRey: #3F85C6;
-    --olivo: #4B7E8E;
-    --crema: #FDEDCD;
-    // FONTS /////
-    --primariaRegular: 'TheForegenRegular';
-    --primariaLight: 'TheForegenRegular';
-    --primariaBold: 'Conv_CoreSansG-Bold';
-    --h1: calc(96px + 10 * ((100vw - 1280px) / 1920)); //
+    // COLORS//
+    --color-back-prm: #3BBCE1;
+    --color-back-sec: #1a1a1a;
+    --color-txt-prm: #3BBCE1;
+    --color-txt-sec: #E02F88;
+    --color-txt-ter: #1a1a1a;
+    --color-txt-gris: #A6A6A6;
+    // FONTS 
+    --primariaRegular: 'Barlow', sans-serif;
+    --primariaBold: "Barlow Condensed", Helvetica, Arial, sans-serif;
+    ;
+    // --primariaLight: 'TheForegenRegular';
+    --txt-big: calc(100px + 0 * ((100vw - 1280px) / 1920)); //
+    --h1: calc(100px + 10 * ((100vw - 1280px) / 1920)); //
     --h2: calc(60px + 10 * ((100vw - 1280px) / 1920)); //
-    --h3: calc(34px + 10 * ((100vw - 1280px) / 1920)); //
-    --h4: calc(28px + 10 * ((100vw - 1280px) / 1920)); //
-    --h5: calc(16px + 10 * ((100vw - 1280px) / 1920)); //
-    --h6: calc(12px + 10 * ((100vw - 1280px) / 1920));
-    /// SECTIONS /////
-    // --paddingSection: 350px 130px 400px;
-    --paddingSection: 100px 130px 400px;
+    --h3: calc(42px + 10 * ((100vw - 1280px) / 1920)); //
+    --h4: calc(25px + 10 * ((100vw - 1280px) / 1920)); //
+    --h5: calc(17px + 10 * ((100vw - 1280px) / 1920)); //
+    --h6: calc(14px + 10 * ((100vw - 1280px) / 1920)); //
+    // --h6: calc(16px + 10 * ((100vw - 1280px) / 1920)); //
+    // MISC
+    /// SECTIONS 
+    --paddingSection: 80px 40px;
+    --paddingTop: calc(200px + 25 * ((100vw - 1920px)/ 320));
     ///// MEDIA MOBILE /////
     @media (max-width: 992px) {
-        --h1: calc(34px + 10 * ((100vw - 320px) / 1280)); //
-        --h2: calc(26px + 10 * ((100vw - 320px) / 1280));
-        --h3: calc(20px + 10 * ((100vw - 320px) / 1280)); //
-        --h4: calc(16px + 10 * ((100vw - 320px) / 1280)); //
-        --h5: calc(14px + 10 * ((100vw - 320px) / 1280));
+        --h1: calc(60px + 10 * ((100vw - 320px) / 1280)); //
+        --h2: calc(36px + 10 * ((100vw - 320px) / 1280)); //
+        --h3: calc(20px + 10 * ((100vw - 320px) / 1280));
+        --h4: calc(16px + 10 * ((100vw - 320px) / 1280));
+        --h5: calc(14px + 10 * ((100vw - 320px) / 1280)); //
         --h6: calc(12px + 10 * ((100vw - 320px) / 1280)); //
-        --paddingSection: 50px 20px 100px;
+        --paddingSection: 50px 0px;
     }
 }

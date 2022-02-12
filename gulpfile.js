@@ -16,7 +16,11 @@ const gulp = require("gulp"),
     extReplace = require("gulp-ext-replace"),
     watch = require("gulp-watch"),
     purgecss = require("gulp-purgecss"),
-    del = require('del');
+    del = require('del'),
+    {
+        src,
+        dest
+    } = require('gulp');
 
 /* ======================================================================================================
  * Tarea PUG
@@ -104,7 +108,7 @@ gulp.task("minifyCSS", () => {
  * Tarea sobre minify image
  * ======================================================================================================*/
 gulp.task("img", () => {
-    gulp
+    return gulp
         .src("./src/img/**/**.*")
         // .pipe(imagemin())
         .pipe(gulp.dest("./dist/img/"));
@@ -139,7 +143,7 @@ gulp.task("exportWebP", () => {
  * ======================================================================================================*/
 gulp.task("scripts", () => {
     return gulp
-        .src(["./src/js/jquery-3.4.1.min.js", "./src/js/**/**.js"])
+        .src("./src/js/**/**.js")
 
     .pipe(uglifyes())
         .pipe(concat("scripts.min.js"))
@@ -150,8 +154,8 @@ gulp.task("scripts", () => {
  * Send Fonts and Images
  * ======================================================================================================*/
 gulp.task("pastefiles", () => {
-    gulp.src("./src/fonts/**/**.*").pipe(gulp.dest("./dist/fonts/"));
-    gulp.src("./src/img/**/**.*").pipe(gulp.dest("./dist/img/"));
+    return src("./src/fonts/**/**.*").pipe(gulp.dest("./dist/fonts/")),
+        src("./src/img/**/**.*").pipe(gulp.dest("./dist/img/"));
 
 });
 
@@ -165,6 +169,8 @@ gulp.task("watch", () => {
     gulp.watch("./src/pug/**/*.pug", gulp.series("pug"));
     gulp.watch("./src/img/**/**.*", gulp.series("img"));
     gulp.watch("./src/fonts/*", gulp.series("pastefiles"));
+    gulp.watch("./dist/");
+    // gulp.watch("./dist/").on("change", browserSync.reload);
 });
 
 /* ======================================================================================================
@@ -173,16 +179,11 @@ gulp.task("watch", () => {
 gulp.task("browser-sync", () => {
     browserSync.init({
         injectChanges: true,
-        // files: ["*.html", "./dist/**/*.{html,css,js}"],
         files: ["./dist/**/*.{html,css,js}"],
         server: "./dist",
     });
 
-    gulp.watch("./src/pug/**/*.pug", gulp.series("pug"));
-    gulp.watch("./src/scss/**/**.scss", gulp.series("sass"));
-    gulp.watch("./src/css/**/**.css", gulp.series("minifyCSS"));
-    gulp.watch("./src/js/**/**.js", gulp.series("scripts"));
-    gulp.watch("./dist/");
+    gulp.watch("./src/", gulp.series("watch"));
     gulp.watch("./dist/").on("change", browserSync.reload);
 });
 
