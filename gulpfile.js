@@ -202,7 +202,6 @@ gulp.task(
         "img",
         "exportWebP",
         "pastefiles",
-        "watch",
         "browser-sync"
     )
 );
