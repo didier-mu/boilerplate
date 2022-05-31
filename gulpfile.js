@@ -29,7 +29,7 @@ const gulp = require("gulp"),
 gulp.task("pug", () => {
     return gulp
         .src([
-            "./src/pug/**/**.pug",
+            "./src/pug/**/**.pug", "!./src/pug/includes/**.pug",
         ])
         .pipe(
             pug({
@@ -44,14 +44,14 @@ gulp.task("pug", () => {
 
 
 
-gulp.task('clean', () => {
-    return del('dist/includes', {
-        force: true
-    });
-});
+// gulp.task('clean', () => {
+//     return del('dist/includes', {
+//         force: true
+//     });
+// });
 
 
-gulp.task("html", gulp.series("pug", "clean"));
+// gulp.task("html", gulp.series("pug", "clean"));
 
 /* ======================================================================================================
  * Tarea sobre los Estilos SCSS
@@ -67,13 +67,13 @@ gulp.task("sass", () => {
             })
         )
 
-    .pipe(
-        purgecss({
-            content: ["./src/**/*.pug", "./src/js/**/**.js"],
-            // content: ["./src/**/*.pug"],
-            css: ["./dist/css/styles.min.css"],
-        })
-    )
+    // .pipe(
+    //     purgecss({
+    //         content: ["./src/**/*.pug", "./src/js/**/**.js"],
+    //         // content: ["./src/**/*.pug"],
+    //         css: ["./dist/css/styles.min.css"],
+    //     })
+    // )
 
     .pipe(autoprefixer({
             browsers: ["last 2 versions"],
@@ -146,7 +146,10 @@ gulp.task("scripts", () => {
         .src("./src/js/**/**.js")
 
     .pipe(uglifyes())
-        .pipe(concat("scripts.min.js"))
+        // .pipe(concat("scripts.min.js"))
+        .pipe(rename({
+            suffix: ".min"
+        }))
         .pipe(gulp.dest("./dist/js/"));
 });
 
@@ -196,7 +199,7 @@ gulp.task(
     gulp.series(
         "pug",
         "sass",
-        "html",
+        // "html",
         "scripts",
         "minifyCSS",
         "img",

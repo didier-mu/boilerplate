@@ -1,16 +1,12 @@
--titulo =  "BOILERPLATE"
--ruta = ""
-
-doctype
-html(lang='es')
-    include includes/head.pug
-
-    body
-        include includes/header.pug
-
-        main.home
+extends includes/head.pug
+block head-page
+    title Boilerplate
+block content
+    -ruta = ""
+    include includes/header.pug
+    main.home
 
 
 
-        include includes/footer.pug
+    //- include includes/footer.pug
 
