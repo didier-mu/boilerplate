@@ -2,7 +2,7 @@
  * Plugins utilizados
  * ======================================================================================================*/
 const gulp = require("gulp"),
-    sass = require("gulp-sass"),
+    sass = require("gulp-sass")(require("sass")),
     cssmin = require("gulp-cssmin"),
     autoprefixer = require("gulp-autoprefixer"),
     notify = require("gulp-notify"),
@@ -16,40 +16,34 @@ const gulp = require("gulp"),
     extReplace = require("gulp-ext-replace"),
     watch = require("gulp-watch"),
     purgecss = require("gulp-purgecss"),
-    del = require('del'),
-    {
-        src,
-        dest
-    } = require('gulp');
+    del = require("del"),
+    { src, dest } = require("gulp");
 
 /* ======================================================================================================
  * Tarea PUG
  * ======================================================================================================*/
 
 gulp.task("pug", () => {
-    return gulp
-        .src([
-            "./src/pug/**/**.pug", "!./src/pug/includes/**.pug",
-        ])
-        .pipe(
-            pug({
-                pretty: true,
-            })
-        )
-        // .pipe(rewriteImagePath({
-        //     path: "build/images",
-        // }))
-        .pipe(gulp.dest("./dist/"))
+    return (
+        gulp
+            .src(["./src/pug/**/**.pug", "!./src/pug/includes/**.pug"])
+            .pipe(
+                pug({
+                    pretty: true,
+                })
+            )
+            // .pipe(rewriteImagePath({
+            //     path: "build/images",
+            // }))
+            .pipe(gulp.dest("./dist/"))
+    );
 });
-
-
 
 // gulp.task('clean', () => {
 //     return del('dist/includes', {
 //         force: true
 //     });
 // });
-
 
 // gulp.task("html", gulp.series("pug", "clean"));
 
@@ -58,36 +52,44 @@ gulp.task("pug", () => {
  * ======================================================================================================*/
 
 gulp.task("sass", () => {
-    return gulp
-        .src("./src/scss/main.scss")
-        .pipe(sass().on("error", sass.logError))
-        .pipe(
-            cssmin().on("error", function(err) {
-                console.log(err);
-            })
-        )
+    return (
+        gulp
+            .src("./src/scss/main.scss")
+            .pipe(sass().on("error", sass.logError))
+            .pipe(
+                cssmin().on("error", function (err) {
+                    console.log(err);
+                })
+            )
 
-    // .pipe(
-    //     purgecss({
-    //         content: ["./src/**/*.pug", "./src/js/**/**.js"],
-    //         // content: ["./src/**/*.pug"],
-    //         css: ["./dist/css/styles.min.css"],
-    //     })
-    // )
+            // .pipe(
+            //     purgecss({
+            //         content: ["./src/**/*.pug", "./src/js/**/**.js"],
+            //         // content: ["./src/**/*.pug"],
+            //         css: ["./dist/css/styles.min.css"],
+            //     })
+            // )
 
-    .pipe(autoprefixer({
-            browsers: ["last 2 versions"],
-            cascade: false
-        }))
-        .pipe(rename({
-            suffix: ".min"
-        }))
-        .pipe(gulp.dest("./src/css/"))
-        .pipe(notify({
-            title: "SCSS",
-            message: "OK"
-        }))
-        .pipe(browserSync.stream());
+            .pipe(
+                autoprefixer({
+                    browsers: ["last 2 versions"],
+                    cascade: false,
+                })
+            )
+            .pipe(
+                rename({
+                    suffix: ".min",
+                })
+            )
+            .pipe(gulp.dest("./src/css/"))
+            .pipe(
+                notify({
+                    title: "SCSS",
+                    message: "OK",
+                })
+            )
+            .pipe(browserSync.stream())
+    );
 });
 
 /* ======================================================================================================
@@ -98,7 +100,7 @@ gulp.task("minifyCSS", () => {
     return gulp
         .src("./src/css/*.css")
 
-    .pipe(cssmin())
+        .pipe(cssmin())
         .pipe(concat("styles.min.css"))
         .pipe(gulp.dest("./dist/css/"))
         .pipe(browserSync.stream());
@@ -108,11 +110,12 @@ gulp.task("minifyCSS", () => {
  * Tarea sobre minify image
  * ======================================================================================================*/
 gulp.task("img", () => {
-    return gulp
-        .src("./src/img/**/**.*")
-        // .pipe(imagemin())
-        .pipe(gulp.dest("./dist/img/"));
-
+    return (
+        gulp
+            .src("./src/img/**/**.*")
+            // .pipe(imagemin())
+            .pipe(gulp.dest("./dist/img/"))
+    );
 });
 
 /* ======================================================================================================
@@ -142,24 +145,29 @@ gulp.task("exportWebP", () => {
  * Tarea sobre los Scripts
  * ======================================================================================================*/
 gulp.task("scripts", () => {
-    return gulp
-        .src("./src/js/**/**.js")
+    return (
+        gulp
+            .src("./src/js/**/**.js")
 
-    .pipe(uglifyes())
-        // .pipe(concat("scripts.min.js"))
-        .pipe(rename({
-            suffix: ".min"
-        }))
-        .pipe(gulp.dest("./dist/js/"));
+            .pipe(uglifyes())
+            // .pipe(concat("scripts.min.js"))
+            .pipe(
+                rename({
+                    suffix: ".min",
+                })
+            )
+            .pipe(gulp.dest("./dist/js/"))
+    );
 });
 
 /* ======================================================================================================
  * Send Fonts and Images
  * ======================================================================================================*/
 gulp.task("pastefiles", () => {
-    return src("./src/fonts/**/**.*").pipe(gulp.dest("./dist/fonts/")),
-        src("./src/img/**/**.*").pipe(gulp.dest("./dist/img/"));
-
+    return (
+        src("./src/fonts/**/**.*").pipe(gulp.dest("./dist/fonts/")),
+        src("./src/img/**/**.*").pipe(gulp.dest("./dist/img/"))
+    );
 });
 
 /* ======================================================================================================

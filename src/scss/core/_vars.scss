@@ -1,38 +1,23 @@
 :root {
     // COLORS//
-    --bg-prm: #FD4C18;
-    --bg-sec: #191919;
-    --bg-ter: #D95242;
-    --bg-gris: #EEEEEE;
-    --txt-prm: #3BBCE1;
-    --txt-sec: #E02F88;
-    --txt-ter: #1a1a1a;
-    --txt-gris: #A6A6A6;
-    // FONTS 
-    --primariaRegular: 'Barlow', sans-serif;
-    --primariaBold: "Barlow Condensed", Helvetica, Arial, sans-serif;
-    ;
-    // --primariaLight: 'TheForegenRegular';
-    --txt-big: calc(100px + 0 * ((100vw - 1280px) / 1920)); //
-    --h1: calc(100px + 10 * ((100vw - 1280px) / 1920)); //
-    --h2: calc(60px + 10 * ((100vw - 1280px) / 1920)); //
-    --h3: calc(42px + 10 * ((100vw - 1280px) / 1920)); //
-    --h4: calc(25px + 10 * ((100vw - 1280px) / 1920)); //
-    --h5: calc(17px + 10 * ((100vw - 1280px) / 1920)); //
-    --h6: calc(14px + 10 * ((100vw - 1280px) / 1920)); //
-    // --h6: calc(16px + 10 * ((100vw - 1280px) / 1920)); //
-    // MISC
-    /// SECTIONS 
-    --paddingSection: 80px 40px;
-    --paddingTop: calc(200px + 25 * ((100vw - 1920px)/ 320));
-    ///// MEDIA MOBILE /////
-    @media (max-width: 992px) {
-        --h1: calc(60px + 10 * ((100vw - 320px) / 1280)); //
-        --h2: calc(36px + 10 * ((100vw - 320px) / 1280)); //
-        --h3: calc(20px + 10 * ((100vw - 320px) / 1280));
-        --h4: calc(16px + 10 * ((100vw - 320px) / 1280));
-        --h5: calc(14px + 10 * ((100vw - 320px) / 1280)); //
-        --h6: calc(12px + 10 * ((100vw - 320px) / 1280)); //
-        --paddingSection: 50px 0px;
-    }
+    --color-prm-1: #00dff4;
+    --color-prm-2: #00ddf1;
+    --color-sec: #db0080;
+    --color-ter: #d95242;
+    --color-gris: #eeeeee;
+    // FONTS
+    --font-prm-regular: "geizer-regular", sans-serif;
+    --font-sec-regular: "bebas-regular", sans-serif;
+    --font-sec-bold: "hanson-bold", sans-serif;
+
+    --txt-3xl: calc(100px + 0 * ((100vw - 1280px) / 1920));
+    --txt-2xl: calc(100px + 10 * ((100vw - 1280px) / 1920));
+    --txt-xl: calc(60px + 10 * ((100vw - 1280px) / 1920));
+    --txt-l: calc(42px + 10 * ((100vw - 1280px) / 1920));
+    --txt-m: calc(25px + 10 * ((100vw - 1280px) / 1920));
+    --txt-s: calc(17px + 10 * ((100vw - 1280px) / 1920));
+    --txt-xs: calc(14px + 10 * ((100vw - 1280px) / 1920));
+
+    /// SECTIONS
+    --padding-section: 80px 40px;
 }

@@ -1,13 +1,15 @@
 & {
     overflow-x: hidden;
     position: relative;
-    font-family: var(--primariaRegular);
+    font-family: var(--primaria-regular);
+
     h1,
     h2,
     h3,
     h4,
     h5,
-    h6 {
+    h6,
+    p {
         margin-bottom: 0;
         line-height: normal;
     }
@@ -16,7 +18,6 @@
     }
     h2 {
         font-size: var(--h2);
-        line-height: 1;
     }
     h3 {
         font-size: var(--h3);
@@ -29,19 +30,18 @@
     }
     h6 {
         font-size: var(--h6);
-        letter-spacing: 1px;
-    }
-    b {
-        font-family: var(--primariaBold);
     }
     p {
         font-size: var(--h4);
     }
 }
 
-/// MOBILE
-@media (max-width:992px) {
-    & {}
-}
+// /// TABLET
+// @media (max-width:1024px) {
+//     & {}
+// }
 
-// 992
+// /// MOBILE
+// @media (max-width:640px) {
+//     & {}
+// }
