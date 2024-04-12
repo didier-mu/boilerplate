@@ -1,6 +1,7 @@
 /* ======================================================================================================
  * Plugins utilizados
  * ======================================================================================================*/
+
 const gulp = require("gulp"),
     sass = require("gulp-sass")(require("sass")),
     cssmin = require("gulp-cssmin"),
@@ -32,20 +33,18 @@ gulp.task("pug", () => {
                     pretty: true,
                 })
             )
-            // .pipe(rewriteImagePath({
-            //     path: "build/images",
-            // }))
             .pipe(gulp.dest("./dist/"))
     );
 });
 
-// gulp.task('clean', () => {
-//     return del('dist/includes', {
-//         force: true
-//     });
-// });
-
-// gulp.task("html", gulp.series("pug", "clean"));
+gulp.task("imagemin", () => {
+    return (
+        gulp
+            .src("./src/img/**/*.{jpg,jpeg,png,svg,gif}")
+            .pipe(imagemin())
+            .pipe(gulp.dest("./dist/img/"))
+    );
+});
 
 /* ======================================================================================================
  * Tarea sobre los Estilos SCSS
@@ -61,15 +60,6 @@ gulp.task("sass", () => {
                     console.log(err);
                 })
             )
-
-            // .pipe(
-            //     purgecss({
-            //         content: ["./src/**/*.pug", "./src/js/**/**.js"],
-            //         // content: ["./src/**/*.pug"],
-            //         css: ["./dist/css/styles.min.css"],
-            //     })
-            // )
-
             .pipe(
                 autoprefixer({
                     browsers: ["last 2 versions"],
@@ -99,7 +89,6 @@ gulp.task("sass", () => {
 gulp.task("minifyCSS", () => {
     return gulp
         .src("./src/css/*.css")
-
         .pipe(cssmin())
         .pipe(concat("styles.min.css"))
         .pipe(gulp.dest("./dist/css/"))
@@ -109,11 +98,11 @@ gulp.task("minifyCSS", () => {
 /* ======================================================================================================
  * Tarea sobre minify image
  * ======================================================================================================*/
+
 gulp.task("img", () => {
     return (
         gulp
             .src("./src/img/**/**.*")
-            // .pipe(imagemin())
             .pipe(gulp.dest("./dist/img/"))
     );
 });
@@ -144,13 +133,12 @@ gulp.task("exportWebP", () => {
 /* ======================================================================================================
  * Tarea sobre los Scripts
  * ======================================================================================================*/
+
 gulp.task("scripts", () => {
     return (
         gulp
             .src("./src/js/**/**.js")
-
             .pipe(uglifyes())
-            // .pipe(concat("scripts.min.js"))
             .pipe(
                 rename({
                     suffix: ".min",
@@ -163,6 +151,7 @@ gulp.task("scripts", () => {
 /* ======================================================================================================
  * Send Fonts and Images
  * ======================================================================================================*/
+
 gulp.task("pastefiles", () => {
     return (
         src("./src/fonts/**/**.*").pipe(gulp.dest("./dist/fonts/")),
@@ -173,6 +162,7 @@ gulp.task("pastefiles", () => {
 /* ======================================================================================================
  * Tarea por default
  * ======================================================================================================*/
+
 gulp.task("watch", () => {
     gulp.watch("./src/scss/**/**.scss", gulp.series("sass"));
     gulp.watch("./src/css/**/**.css", gulp.series("minifyCSS"));
@@ -181,12 +171,12 @@ gulp.task("watch", () => {
     gulp.watch("./src/img/**/**.*", gulp.series("img"));
     gulp.watch("./src/fonts/*", gulp.series("pastefiles"));
     gulp.watch("./dist/");
-    // gulp.watch("./dist/").on("change", browserSync.reload);
 });
 
 /* ======================================================================================================
  * Browser Sync
  * ======================================================================================================*/
+
 gulp.task("browser-sync", () => {
     browserSync.init({
         injectChanges: true,
@@ -207,7 +197,6 @@ gulp.task(
     gulp.series(
         "pug",
         "sass",
-        // "html",
         "scripts",
         "minifyCSS",
         "img",
