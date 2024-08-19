@@ -1,23 +1,51 @@
 :root {
     // COLORS//
-    --color-prm-1: #00dff4;
-    --color-prm-2: #00ddf1;
-    --color-sec: #db0080;
-    --color-ter: #d95242;
-    --color-gris: #eeeeee;
-    // FONTS
-    --font-prm-regular: "geizer-regular", sans-serif;
-    --font-sec-regular: "bebas-regular", sans-serif;
-    --font-sec-bold: "hanson-bold", sans-serif;
+    --color-prm: #2E79E3;
+    --color-sec: #FFDE01;
+    --color-trc: #757575;
+    --color-trc-200: #9E9E9E;
+    --color-ctr: #1E1E1E;
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-transparent: transparent;
 
-    --txt-3xl: calc(100px + 0 * ((100vw - 1280px) / 1920));
-    --txt-2xl: calc(100px + 10 * ((100vw - 1280px) / 1920));
-    --txt-xl: calc(60px + 10 * ((100vw - 1280px) / 1920));
-    --txt-l: calc(42px + 10 * ((100vw - 1280px) / 1920));
-    --txt-m: calc(25px + 10 * ((100vw - 1280px) / 1920));
-    --txt-s: calc(17px + 10 * ((100vw - 1280px) / 1920));
-    --txt-xs: calc(14px + 10 * ((100vw - 1280px) / 1920));
+    // FONTS
+    --primaria-regular: "Museo300-Regular", sans-serif;
+    --primaria-bold: "Museo700-Bold", sans-serif;
+
+    --xxxxxxxl: calc(100px + 40 * ((100vw - 1920px) / 1280));
+    --xxxxxxl: calc(80px + 40 * ((100vw - 1920px) / 1280));
+    --xxxxxl: calc(72px + 40 * ((100vw - 1920px) / 1280));
+    --xxxxl: calc(64px + 40 * ((100vw - 1920px) / 1280));
+    --xxxl: calc(56px + 24 * ((100vw - 1920px) / 1280));
+    --xxl: calc(48px + 24 * ((100vw - 1920px) / 1280));
+    --xl: calc(40px + 20 * ((100vw - 1920px) / 1280));
+    --l: calc(32px + 16 * ((100vw - 1920px) / 1280));
+    --m: calc(24px + 16 * ((100vw - 1920px) / 1280));
+    --s: calc(16px + 16 * ((100vw - 1920px) / 1280));
+
+    --card: calc(40px + 12 * ((100vw - 1920px) / 1280));
+    --label: calc(28px + 16 * ((100vw - 1920px) / 1280));
+    --titleCard: calc(20px + 16 * ((100vw - 1920px) / 1280));
 
     /// SECTIONS
-    --padding-section: 80px 40px;
+    --padding-section: calc(100px + 40 * ((100vw - 1920px) / 1280)) 0;
+    --padding-innersection: calc(60px + 20 * ((100vw - 1920px) / 1280)) 0;
+
+    /// SPACELETTER
+    --letter-spacing: 0.2rem;
+
+    /// ANIMATION HOVER
+    --animationhover: all 0.3s ease;
+
+    /// SOMBRA INTERIOR
+    --sombra-interior: inset 0 24px 20px -10px rgba(0, 0, 0, .2);
+    
+}
+
+@media (max-width: 767px) {
+    :root {
+        --label: calc(34px + 16 * ((100vw - 1920px) / 1280));
+        --titleCard: calc(20px + 16 * ((100vw - 1920px) / 1280));
+    }
 }

@@ -1,35 +1,22 @@
 @font-face {
-    font-family: "geizer-regular";
-    src: url("../fonts/primaria-regular/GeizerRegular.eot");
+    font-family: "Museo300-Regular";
+    src: url("../fonts/primaria-light/Museo300-Regular.eot");
     src: local("☺"),
-        url("../fonts/primaria-regular/GeizerRegular.otf") format("opentype"),
-        url("../fonts/primaria-regular/GeizerRegular.ttf") format("truetype"),
-        url("../fonts/primaria-regular/GeizerRegular.svg") format("svg");
+        url("../fonts/primaria-light/Museo300-Regular.otf") format("opentype"),
+        url("../fonts/primaria-light/Museo300-Regular.ttf") format("truetype"),
+        url("../fonts/primaria-light/Museo300-Regular.svg") format("svg");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: "bebas-regular";
-    src: url("../fonts/secundaria-regular/BebasNeue-Regular.eot");
+    font-family: "Museo700-Bold";
+    src: url("../fonts/primaria-bold/Museo700-Bold.eot");
     src: local("☺"),
-        url("../fonts/secundaria-regular/BebasNeue-Regular.otf")
-            format("opentype"),
-        url("../fonts/secundaria-regular/BebasNeue-Regular.ttf")
-            format("truetype"),
-        url("../fonts/secundaria-regular/BebasNeue-Regular.svg") format("svg");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "hanson-bold";
-    src: url("../fonts/tercera-bold/Hanson.eot");
-    src: local("☺"), url("../fonts/tercera-bold/Hanson.otf") format("opentype"),
-        url("../fonts/tercera-bold/Hanson.ttf") format("truetype"),
-        url("../fonts/tercera-bold/Hanson.svg") format("svg");
+        url("../fonts/primaria-bold/Museo700-Bold.otf") format("opentype"),
+        url("../fonts/primaria-bold/Museo700-Bold.ttf") format("truetype"),
+        url("../fonts/primaria-bold/Museo700-Bold.svg") format("svg");
     font-weight: normal;
     font-style: normal;
     font-display: swap;

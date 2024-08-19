@@ -1,18 +1,18 @@
 //package
-$grid-breakpoints: (
-    xs: 0,
-    sm: 721px,
-    md: 769px,
-    lg: 1025px,
-    xl: 1280px,
-    xxl: 1440px,
-);
+// $grid-breakpoints: (
+//     xs: 0,
+//     sm: 721px,
+//     md: 769px,
+//     lg: 1025px,
+//     xl: 1280px,
+//     xxl: 1440px,
+// );
 $container-max-widths: (
-    sm: 100%,
-    md: 720px,
+    // sm: 100%,
+    // md: 720px,
     lg: 960px,
     xl: 1140px,
-    xxl: 1366px,
+    xxl: 1600px
 );
 
 @import "../../node_modules/bootstrap/scss/bootstrap";

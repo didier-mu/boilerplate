@@ -1,11 +1,13 @@
 extends includes/head.pug
 block head-page
-    title Boilerplate
+    title Vibra
 block content
     -ruta = ""
 
-    main.home       
+    include includes/header.pug
+
+    main.home
 
     include includes/footer.pug
     script(src="js/functions.min.js" defer)
-
+    script(src="js/animation.min.js" defer)
