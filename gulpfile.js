@@ -13,6 +13,7 @@ const gulp = require("gulp"),
     rename = require("gulp-rename"),
     imagemin = require("gulp-imagemin"),
     webp = require("imagemin-webp"),
+    gulpAvif = require("gulp-avif"),
     extReplace = require("gulp-ext-replace"),
     watch = require("gulp-watch"),
     purgecss = require("gulp-purgecss"),
@@ -142,6 +143,23 @@ gulp.task("exportWebP", () => {
 });
 
 /* ======================================================================================================
+ * Tarea para crear imagenes avif
+ * ======================================================================================================*/
+
+gulp.task("exportAvif", () => {
+    let src = "./src/img/**/*.{jpg,jpeg,png}";
+    let dest = "./src/img/";
+    let destDist = "./dist/img/";
+
+    return gulp
+        .src(src)
+        .pipe(gulpAvif())
+        .pipe(extReplace(".avif"))
+        .pipe(gulp.dest(dest))
+        .pipe(gulp.dest(destDist));
+});
+
+/* ======================================================================================================
  * Tarea sobre los Scripts
  * ======================================================================================================*/
 gulp.task("scripts", () => {
@@ -195,6 +213,8 @@ gulp.task("browser-sync", () => {
     });
 
     gulp.watch("./src/", gulp.series("watch"));
+    gulp.watch("./src/img/**/*.{jpg,jpeg,png}", gulp.series("exportWebP", "exportAvif"))
+        .on("change", browserSync.reload);
     gulp.watch("./dist/").on("change", browserSync.reload);
 });
 

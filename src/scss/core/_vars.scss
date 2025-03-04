@@ -1,36 +1,36 @@
 :root {
     // COLORS//
-    --color-prm: #2E79E3;
-    --color-sec: #FFDE01;
-    --color-trc: #757575;
-    --color-trc-200: #9E9E9E;
-    --color-ctr: #1E1E1E;
+    --color-prm: #45A74E;
+    --color-sec: #ED1C24;
+    --color-trc: #1F5124;
     --color-white: #ffffff;
-    --color-black: #000000;
-    --color-transparent: transparent;
+    --color-black: #262626;
+    --color-bgBeige: #F6F1E4;
 
     // FONTS
-    --primaria-regular: "Museo300-Regular", sans-serif;
-    --primaria-bold: "Museo700-Bold", sans-serif;
+    --font-prm: "Antenna-Black", sans-serif;
+    --font-sec: "Antenna-Bold", sans-serif;
+    --font-trc: "Antenna-Medium", sans-serif;
+    --font-fou: "Antenna-Regular", sans-serif;
+    --font-fiv: "Antenna-Light", sans-serif;
 
-    --xxxxxxxl: calc(100px + 40 * ((100vw - 1920px) / 1280));
-    --xxxxxxl: calc(80px + 40 * ((100vw - 1920px) / 1280));
-    --xxxxxl: calc(72px + 40 * ((100vw - 1920px) / 1280));
-    --xxxxl: calc(64px + 40 * ((100vw - 1920px) / 1280));
-    --xxxl: calc(56px + 24 * ((100vw - 1920px) / 1280));
-    --xxl: calc(48px + 24 * ((100vw - 1920px) / 1280));
+
+    --xxxxxl: calc(90px + 40 * ((100vw - 1920px) / 1280));
+    --xxxxl: calc(72px + 40 * ((100vw - 1920px) / 1280));
+    --xxxl: calc(60px + 40 * ((100vw - 1920px) / 1280));
+    --xxl: calc(50px + 35 * ((100vw - 1920px) / 1280));
     --xl: calc(40px + 20 * ((100vw - 1920px) / 1280));
     --l: calc(32px + 16 * ((100vw - 1920px) / 1280));
-    --m: calc(24px + 16 * ((100vw - 1920px) / 1280));
-    --s: calc(16px + 16 * ((100vw - 1920px) / 1280));
-
-    --card: calc(40px + 12 * ((100vw - 1920px) / 1280));
-    --label: calc(28px + 16 * ((100vw - 1920px) / 1280));
-    --titleCard: calc(20px + 16 * ((100vw - 1920px) / 1280));
+    --m: calc(28px + 16 * ((100vw - 1920px) / 1280));
+    --s: calc(26px + 16 * ((100vw - 1920px) / 1280));
+    --xs: calc(23px + 16 * ((100vw - 1920px) / 1280));
+    --xxs: calc(20px + 16 * ((100vw - 1920px) / 1280));
+    --xxxs: calc(16px + 16 * ((100vw - 1920px) / 1280));
 
     /// SECTIONS
     --padding-section: calc(100px + 40 * ((100vw - 1920px) / 1280)) 0;
-    --padding-innersection: calc(60px + 20 * ((100vw - 1920px) / 1280)) 0;
+    --padding-innersection: calc(48px + 20 * ((100vw - 1920px) / 1280)) 0;
+    --padding-title: calc(64px + 40 * ((100vw - 1920px) / 1280)) 0;
 
     /// SPACELETTER
     --letter-spacing: 0.2rem;
@@ -40,12 +40,37 @@
 
     /// SOMBRA INTERIOR
     --sombra-interior: inset 0 24px 20px -10px rgba(0, 0, 0, .2);
+
+    /// BORDER RADIUS
+    --borderradius: 1rem;
     
 }
 
+/// MEDIA TABLET /////
+@media (max-width: 1023px) {
+        
+}
+
+/// MEDIA MOBILE /////
 @media (max-width: 767px) {
     :root {
-        --label: calc(34px + 16 * ((100vw - 1920px) / 1280));
-        --titleCard: calc(20px + 16 * ((100vw - 1920px) / 1280));
+
+        /// BORDER RADIUS
+        --borderradius: 0.5rem;
+
+        // SECTIONS
+        --padding-innersection: calc(40px + 20 * ((100vw - 1920px) / 1280)) 0;
+        --padding-title: calc(80px + 40 * ((100vw - 1920px) / 1280)) 0;
+
+        // FONTS
+        --xxxl: calc(60px + 32 * ((100vw - 1920px) / 1280));
+        --xxl: calc(50px + 24 * ((100vw - 1920px) / 1280));
+        --xl: calc(40px + 10 * ((100vw - 1920px) / 1280));
+        --m: calc(28px + 10 * ((100vw - 1920px) / 1280));
+        --s: calc(26px + 10 * ((100vw - 1920px) / 1280));
+        --xs: calc(23px + 10 * ((100vw - 1920px) / 1280));
+        --xxs: calc(20px + 8 * ((100vw - 1920px) / 1280));
+        --xxxs: calc(16px + 7 * ((100vw - 1920px) / 1280));
+
     }
 }
